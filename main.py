@@ -1,44 +1,63 @@
+import copy
 grid = [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
         ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
         ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
         ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
         ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
         ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
-         ]  
+         ]
+grid1 = [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+        ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+        ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+        ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+        ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+        ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
+         ]
 
-def options (x):
+
+def options (x ,grid, grid1):
     if x == 1:
-        grid = [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-                ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-                ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-                ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-                ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-                ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']]
+        
+        grid = grid1
         print("Reset Success")
-        return grid
+        print(grid)
         menu()
         
-        
+
+
+
     elif x == 2:
         print("-----CAR REMOVE-----")
-        rmcarRow = input("Enter row of the car: ")
-        rmcarCol = input("Enter col of the car: ")
+        rmcarRow = int(input("Enter row of the car: ")) - 1
+        rmcarCol = int(input("Enter col of the car: ")) - 1
+        grid[rmcarRow][rmcarCol] = "-"
+        #return grid
+        menu()
+        
         menu()
     elif x == 3:
-        print("exeuted option 3")
+        print("-----CAR ADD-----")
+        rmcarRow = int(input("Enter row of the car: ")) - 1
+        rmcarCol = int(input("Enter col of the car: ")) - 1
+        numPlate = str(input("Enter Licence Plate Number: "))
+        grid[rmcarRow][rmcarCol] = numPlate
+        #return grid
         menu()
     elif x == 4:
-        
+        print(grid)
         for row in grid:
-            print(" | ".join(row)) 
+            print(" | ".join(row))
             print("   ")
         menu()
     elif x == 5:
-        print("exeuted option 5")
+        print("stopping program")
+        exit()
+        
+        menu()
+    else:
+        print("Enter a valid option")
         menu()
     
-    
-
 
 
 
@@ -51,7 +70,7 @@ def menu():
     print("5. Quit ")
     print("select an option")
     option = int(input("Enter a choice(1-5):  "))
-    options(option)
-    
+    options(option, grid, grid1)
+
 
 menu()
